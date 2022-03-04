@@ -20,13 +20,11 @@ public class MainActivity extends AppCompatActivity {
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
 
         EditText phoneNum = findViewById(R.id.phno);
-
         Button call = findViewById(R.id.call);
         call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String number = phoneNum.getText().toString();
-
                 callIntent.setData(Uri.parse("tel:" + number));
                 startActivity(callIntent);
             }

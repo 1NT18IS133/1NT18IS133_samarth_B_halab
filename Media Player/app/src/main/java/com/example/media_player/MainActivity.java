@@ -1,6 +1,7 @@
 package com.example.media_player;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -13,11 +14,11 @@ public class MainActivity extends AppCompatActivity {
 
     MediaPlayer createMedia() {
         newplayer = MediaPlayer.create(this, R.raw.song);
-        return(newplayer);
+        return (newplayer);
     }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         int shift = 10000;
@@ -32,22 +33,20 @@ public class MainActivity extends AppCompatActivity {
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 title.setText("Drum Solo");
                 player.start();
             }
         });
-        pause.setOnClickListener((new View.OnClickListener(){
+        pause.setOnClickListener((new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 player.pause();
             }
         }));
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 player.stop();
                 player = createMedia();
             }
@@ -55,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         revert.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 player.reset();
                 player = createMedia();
                 player.start();
@@ -65,28 +63,24 @@ public class MainActivity extends AppCompatActivity {
 
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 int curr = player.getCurrentPosition();
-                int dur  = player.getDuration();
+                int dur = player.getDuration();
 
-                if ((curr + shift) <= dur)
-                {
-                    player.seekTo(curr+shift);
+                if ((curr + shift) <= dur) {
+                    player.seekTo(curr + shift);
                 }
             }
         });
 
         rewind.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 int curr = player.getCurrentPosition();
-                int dur  = player.getDuration();
+                int dur = player.getDuration();
 
-                if ((curr - shift) >= 0)
-                {
-                    player.seekTo(curr+shift);
+                if ((curr - shift) >= 0) {
+                    player.seekTo(curr + shift);
                 }
             }
         });

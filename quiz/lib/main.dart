@@ -16,7 +16,7 @@ class Questions {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: SafeArea(
       child: Scaffold(
         body: QuizPage(),
@@ -33,18 +33,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Quiz App',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
       home: const QuizPage(),
     );
   }
@@ -66,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
               checkquestionNumber(questionNumber)
                   ? questions.questionBank[questionNumber].questionText.toString()
                   : " End",
-              style: TextStyle(fontSize: 40.0),
+              style: const TextStyle(fontSize: 40.0),
             ),
           ),
           if (checkquestionNumber(questionNumber)) SizedBox(height: 20.0),
@@ -135,6 +123,7 @@ class _QuizPageState extends State<QuizPage> {
   int questionNumber = 0; // stores the questionNumber, default = first
   int currentScore = 0; // final score initialized to 0
   Questions questions = Questions(); // Create an object of the Question Class
+
   void updateQuestionNumber() {
     setState(() {
       questionNumber = questionNumber + 1; // Increments the Question Number
@@ -156,7 +145,7 @@ class _QuizPageState extends State<QuizPage> {
     }
   }
 
-// function to ensure that the question number to be not crossing the boundary ofthe list
+// function to ensure that the question number to be not crossing the boundary of the list
   bool checkquestionNumber(int questionNumber) {
     return questionNumber < questions.questionBank.length ? true : false;
   }

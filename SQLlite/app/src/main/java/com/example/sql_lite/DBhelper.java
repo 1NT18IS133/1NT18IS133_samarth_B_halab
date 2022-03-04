@@ -24,8 +24,8 @@ public class DBhelper extends SQLiteOpenHelper {
 
     public boolean insertData(String name, String contact, String age) {
         SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues contentValues = new ContentValues();
+
         contentValues.put("name", name);
         contentValues.put("contact", contact);
         contentValues.put("age", age);
@@ -35,10 +35,10 @@ public class DBhelper extends SQLiteOpenHelper {
         else
             return true;
     }
-
     public boolean updateData(String name, String contact, String age) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
         contentValues.put("contact", contact);
         contentValues.put("age", age);
         Cursor cursor = db.rawQuery("Select * from Userdetails where name = ?", new String[]{name});

@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView myWebView = (WebView) findViewById(R.id.webview);
+        WebView myWebView = findViewById(R.id.webview);
         myWebView.loadUrl("https://www.google.com");
     }
 }

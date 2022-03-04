@@ -10,76 +10,118 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Xylophone App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Xylophone App'),
+    return const MaterialApp(
+      title: "Xylophone",
+      home: Xylo(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+class Xylo extends StatefulWidget {
+  const Xylo({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _XyloState createState() => _XyloState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  var xyloColours = [
-    Colors.purple,
-    Colors.indigo,
-    Colors.blue,
-    Colors.green,
-    Colors.yellow,
-    Colors.orange,
-    Colors.red
-  ];
-
-  final player = AudioCache();
-
-  void _playSound(int noteNumber) {
-    player.play("note$noteNumber.wav");
-    print("Playing note$noteNumber.wav...");
-  }
-
-  List<Widget> _getTiles() {
-    List<Widget> tiles = [];
-
-    for (int i = 0; i < xyloColours.length; i++) {
-      tiles.add(
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(backgroundColor: xyloColours[i]),
-            onPressed: () {
-              _playSound(i + 1);
-            },
-            child: Text('${i + 1}'),
-          ),
-        ),
-      );
-    }
-
-    return tiles;
+class _XyloState extends State<Xylo> {
+  void playAudio(int i) {
+    final player = AudioCache();
+    player.play("note$i.wav");
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+    return SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: _getTiles(),
+      children: [
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(1);
+            },
+            child: const Text(
+              "1",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.purpleAccent),
+          ),
         ),
-      ),
-    );
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(2);
+            },
+            child: const Text(
+              "2",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.indigoAccent),
+          ),
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(3);
+            },
+            child: const Text(
+              "3",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.blueAccent),
+          ),
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(4);
+            },
+            child: const Text(
+              "4",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.greenAccent),
+          ),
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(5);
+            },
+            child: const Text(
+              "5",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.amberAccent),
+          ),
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(6);
+            },
+            child: const Text(
+              "6",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.orangeAccent,
+          ),
+        ),
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              playAudio(7);
+            },
+            child: const Text(
+              "7",
+              style: TextStyle(fontSize: 22,color: Colors.white),
+            ),
+            style: TextButton.styleFrom(backgroundColor: Colors.redAccent),
+          ),
+        ),
+      ],
+    ));
   }
 }

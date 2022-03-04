@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: WithScaffold(),
+      home: WithScoffoldAndSafearea(),
     );
   }
 }
@@ -70,12 +71,36 @@ class WithScoffoldAndSafearea extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Scaffold APP"),
       ),
-      backgroundColor: Colors.amberAccent,
-      body: const SafeArea(
-        child: Center(
-          child: Text(
-            "Hello World",
-            style: TextStyle(fontSize: 40, color: Colors.redAccent),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: const Center(
+                  child: Text(
+                    "Child 1",
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                height: 100,
+                width: 100,
+                color: Colors.amberAccent,
+              ),
+              Container(
+                child: const Center(
+                  child: Text(
+                    "Child 2",
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                height: 100,
+                width: 100,
+                color: Colors.redAccent,
+              ),
+            ],
           ),
         ),
       ),
